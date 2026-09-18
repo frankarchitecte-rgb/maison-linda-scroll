@@ -1,0 +1,97 @@
+/* Scrollytelling Maison Linda - style */
+
+:root {
+  --background-color: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--background-color);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* Conteneur haut : c'est lui qui crée la longueur de défilement.
+   Hauteur pilotée par SCROLL_LENGTH_VH dans script.js (500vh par défaut). */
+#scroll-zone {
+  position: relative;
+  height: 500vh;
+}
+
+/* Canvas collant plein écran pendant tout le défilement.
+   100svh : petite hauteur d'écran mobile (barre d'adresse), 100dvh en repli. */
+#sticky-wrap {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+#frame-canvas {
+  display: block;
+  /* L'image ne remplit pas tout l'écran : marges blanches garanties
+     autour du carré (voir IMAGE_MAX_SIZE dans script.js). */
+  width: 100%;
+  height: 100%;
+}
+
+/* Indicateur de chargement discret, disparaît une fois tout chargé */
+#loader {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+#loader.hidden {
+  opacity: 0;
+}
+
+#loader-bar {
+  width: 120px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+#loader-bar::before {
+  content: "";
+  display: block;
+  width: var(--progress, 0%);
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  border-radius: 2px;
+  transition: width 0.2s ease;
+}
+
+#loader-text {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #loader {
+    transition: none;
+  }
+}

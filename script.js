@@ -4,7 +4,7 @@
    CONSTANTES RÉGLABLES
    ============================================================ */
 const FRAME_COUNT = 121;        // Nombre d'images extraites
-const SCROLL_LENGTH_VH = 500;   // Hauteur de défilement en vh (plus grand = plus lent)
+const SCROLL_LENGTH_VH = 250;   // Hauteur de défilement en vh (plus grand = plus lent)
 const FIT_MODE = "contain";     // "contain" (image entière + marges) ou "cover" (plein écran)
 const IMAGE_MAX_SIZE = 0.82;    // Fraction de la fenêtre occupée par l'image (marges blanches autour)
 const BACKGROUND_COLOR = "#ffffff";
